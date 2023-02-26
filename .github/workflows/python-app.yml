@@ -45,13 +45,24 @@ jobs:
       run: |
         python
         
-    - name: Build & push Docker image
-      uses: mr-smithers-excellent/docker-build-push@v4
-      with:
-        image: laurentkouame/gesto-user-terminal-python
-        tag: v1.0.1
-        registry: docker.io
-        username: laurentkouame
-        password: Qra#d2YW9nJs
-        #username: ${{ secrets.DOCKER_USERNAME }}
-        #password: ${{ secrets.DOCKER_PASSWORD }}
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      -
+        name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: laurentkouame
+          password: Qra#d2YW9nJs
+      -
+        name: Build and push
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          tags: user/app:latest
