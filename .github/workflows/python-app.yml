@@ -48,5 +48,7 @@ jobs:
         image: laurentkouame/gesto-user-terminal-python
         tags: v1.0.1, latest
         registry: docker.io
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+        username: laurentkouame
+        password: Qra#d2YW9nJs
+        #username: ${{ secrets.DOCKER_USERNAME }}
+        #password: ${{ secrets.DOCKER_PASSWORD }}
