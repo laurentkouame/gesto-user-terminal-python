@@ -14,9 +14,13 @@ permissions:
 
 jobs:
   build:
-
+  
+    #runs-on: ${{ matrix.os }}
     runs-on: ubuntu-latest
-
+    strategy:
+     matrix:
+      os: [ ubuntu-latest, windows-latest, macOs-latest ]
+      
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
@@ -38,15 +42,11 @@ jobs:
       run: |
         python
         
-    - name: Check out code
-      uses: actions/checkout@v2
-
     - name: Build & push Docker image
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
         image: laurentkouame/gesto-user-terminal-python
         tags: v1.0.1, latest
-        registry: registry-url.io
-        dockerfile: Dockerfile.ci
+        registry: docker.io
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
