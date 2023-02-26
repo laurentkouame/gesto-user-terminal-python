@@ -49,7 +49,7 @@ jobs:
       uses: mr-smithers-excellent/docker-build-push@v4
       with:
         image: laurentkouame/gesto-user-terminal-python
-        tags: v1.0.1, latest
+        tag: v1.0.1
         registry: docker.io
         username: laurentkouame
         password: Qra#d2YW9nJs
